@@ -13,19 +13,23 @@ const FactsForm = props => {
   }
 
   return (
-    <div>
+    <>
       {props.isFetchingData ? (
-        <p>Getting dank cat facts for you</p>
-      ) : (
-        <button onClick={handleGetData}>Get Facts</button>
-      )}
+        <p>Getting some dank cat facts for you</p>
+      ) : <></>}
+
+      {props.facts.length === 0 ? (
+        <button className="get-button" onClick={handleGetData}>Show me them cat facts!</button>
+      ) : <></>}
+
       <FactList />
-    </div>
+    </>
   )
 }
 
 const mapStateToProps = state => {
   return {
+    facts: state.facts,
     isFetchingData: state.isFetchingData
   }
 }
